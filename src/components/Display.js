@@ -1,4 +1,5 @@
 import React from 'react';
+import Header from './Header';
 
 const Display = (props) => {
 
@@ -6,6 +7,7 @@ const Display = (props) => {
     <section
       id="display" 
       className="display">
+      <Header text="Drum Machine!" />
       Sound: { props.soundName }
     </section>
   );

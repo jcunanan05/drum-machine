@@ -1,0 +1,24 @@
+.drumpads
+  //fallback suport, centers drumpads
+  text-align: center
+  // remove list padding
+  padding-left: 0
+  list-style-type: none
+
+//remove fallback when grid is supported
+@mixin remove-drumpads-fallback()
+  .drumpads
+    text-align: left
+
+@mixin drumpads-grid-support()
+.drumpads
+  display: grid
+  grid-template-columns: repeat(3, minmax(min-content, 3rem))
+  grid-gap: 1rem
+  justify-items: center
+  justify-content: center 
+
+//feature query if a browser support grid
+@supports (display: grid)
+  @include remove-drumpads-fallback()
+  @include drumpads-grid-support()

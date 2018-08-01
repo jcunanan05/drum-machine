@@ -3,3 +3,77 @@
 *:before,
 *:after {
   box-sizing: border-box; }
+
+html,
+body {
+  min-height: 100vh;
+  height: 100%;
+  font-family: Roboto, sans-serif;
+  font-size: 16px;
+  font-weight: 400; }
+
+#root {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh; }
+
+.main {
+  flex: 3;
+  padding: 1rem; }
+
+@supports (display: grid) {
+  .main {
+    display: grid;
+    grid-auto-rows: min-content; } }
+
+.drumpads {
+  text-align: center;
+  padding-left: 0;
+  list-style-type: none; }
+
+.drumpads {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(min-content, 3rem));
+  grid-gap: 1rem;
+  justify-items: center;
+  justify-content: center; }
+
+@supports (display: grid) {
+  .drumpads {
+    text-align: left; } }
+
+.drumpad {
+  display: inline-block;
+  margin: .5rem; }
+
+.drumpad button {
+  min-width: 4rem;
+  min-height: 4rem;
+  width: calc(4rem + 6vw);
+  height: calc(4rem + 6vw);
+  max-width: 8rem;
+  max-height: 8rem;
+  color: white;
+  border: none;
+  border-radius: 0.2rem;
+  box-shadow: 0 0 3px 2px #d32f2f, 0 0 3px 1px #212121, inset 0 0 2px 3px #444444;
+  outline: none;
+  background-color: #212121;
+  cursor: pointer; }
+
+.drumpad button:active {
+  color: #212121;
+  background-color: #b93838; }
+
+@media screen and (max-width: 320px) {
+  .drumpad button {
+    width: 4rem;
+    height: 4rem; } }
+
+@supports (display: grid) {
+  .drumpad {
+    display: block;
+    margin: 0; } }
+
+.footer {
+  flex: 1; }

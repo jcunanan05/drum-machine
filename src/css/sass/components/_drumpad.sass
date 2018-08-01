@@ -1,0 +1,56 @@
+$drumpad-min-size: 4rem
+$drumpad-size: 6vw
+$drumpad-max-size: 8rem
+$drumpad-black: #212121
+$drumpad-black-inset: #444444
+$drumpad-red: #d32f2f
+$drumpad-red-active: #b93838
+$drumpad-border-radius: .2rem
+
+
+.drumpad
+  // fallback layout for super old browsers: effect, 
+  // make them inline and breathing space is declared by margin
+  display: inline-block
+  margin: .5rem
+
+// remove fallback layout when grid is supported
+@mixin remove-drumpad-fallback()
+  .drumpad
+    display: block
+    margin: 0
+
+.drumpad button
+  min-width: $drumpad-min-size
+  min-height: $drumpad-min-size
+  width: calc(#{$drumpad-min-size} + #{$drumpad-size})
+  height: calc(#{$drumpad-min-size} + #{$drumpad-size})
+  max-width: $drumpad-max-size
+  max-height: $drumpad-max-size
+  color: white
+  border: none
+  border-radius: $drumpad-border-radius
+  box-shadow: 0 0 3px 2px $drumpad-red, 0 0 3px 1px $drumpad-black, inset 0 0 2px 3px $drumpad-black-inset
+  outline: none
+  background-color: $drumpad-black
+  cursor: pointer
+
+// button won't go super big super small devices
+@mixin drumpad-small-button()
+  .drumpad button
+    width: $drumpad-min-size
+    height: $drumpad-min-size
+
+.drumpad button:active
+  color: $drumpad-black
+  background-color: $drumpad-red-active
+
+//media queries
+@media screen and (max-width: $breakpoint-s-mobile)
+  @include drumpad-small-button
+
+
+// override fallback layouts
+// and design as intended
+@supports (display: grid) 
+  @include remove-drumpad-fallback()
