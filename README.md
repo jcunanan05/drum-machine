@@ -32,7 +32,7 @@ This is a mini-project that I made for fCC front-end libraries development proje
 * [csstricks grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 ### Work to do
-* Build Basic layout
+* Build Skeleton layout
 
 ### Work done
 * Plan about the project
