@@ -7,7 +7,7 @@ class Sound extends Component {
   playSound = () => {
     //play the sound on button click in the drumpad
     const audio = this.soundRef.current;
-    //adjust the volume first
+
     audio.volume = 1;
     audio.play();
   }

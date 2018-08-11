@@ -6,8 +6,7 @@ class Drumpad extends Component {
   soundRef = React.createRef();
 
   handleClick = () => {
-    //access the reference
-    //play sound function
+    //play sound inside the Sound component
     this.soundRef.current.playSound();
   }
 
