@@ -1,9 +1,12 @@
+const ASSET_URL = "sounds";
+
 const drumpads = {
   keyList: [],
 
-  addKey: function(charKey) {
+  addKey: function(charKey, fileName) {
     this.keyList.push({
-      "key": charKey
+      "key": charKey,
+      "audioSource": `${ASSET_URL}/${fileName}`
     });
   },
 
@@ -12,15 +15,15 @@ const drumpads = {
   }
 };
 
-drumpads.addKey('Q');
-drumpads.addKey('W');
-drumpads.addKey('E');
-drumpads.addKey('A');
-drumpads.addKey('S');
-drumpads.addKey('D');
-drumpads.addKey('Z');
-drumpads.addKey('X');
-drumpads.addKey('C');
+drumpads.addKey('Q', 'bubbles.mp3');
+drumpads.addKey('W', 'clay.mp3');
+drumpads.addKey('E', 'confetti.mp3');
+drumpads.addKey('A', 'dotted-spiral.mp3');
+drumpads.addKey('S', 'flash-1.mp3');
+drumpads.addKey('D', 'glimmer.mp3');
+drumpads.addKey('Z', 'moon.mp3');
+drumpads.addKey('X', 'pinwheel.mp3');
+drumpads.addKey('C', 'piston-1.mp3');
 
 
 export default drumpads.getAllKeys();

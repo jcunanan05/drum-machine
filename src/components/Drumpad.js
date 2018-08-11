@@ -1,11 +1,33 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Sound from './Sound';
 
-const Drumpad = (props) => (
-  <li className="drumpad">
-    <button className="drumpad__button">
-      { props.button }
-    </button>
-  </li>
-);
+
+class Drumpad extends Component {
+  soundRef = React.createRef();
+
+  handleClick = () => {
+    //access the reference
+    //play sound function
+    this.soundRef.current.playSound();
+  }
+
+  render() {
+    const props = this.props;
+
+    return (
+      <li className="drumpad">
+        <button 
+          className="drumpad__button"
+          onClick={this.handleClick}>
+          { props.buttonKey }
+
+          <Sound 
+            ref={this.soundRef}
+            source={props.audioSource} />
+        </button>
+      </li>
+    );
+  }
+}
 
 export default Drumpad;
