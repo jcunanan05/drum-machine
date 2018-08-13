@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
 import Display from './Display';
 import Drumpads from './Drumpads';
+import Drumpad from './Drumpad';
 import Footer from './Footer';
+import drumpadList from '../drumpadList';
 
 class App extends Component {
   state = {
@@ -10,7 +12,7 @@ class App extends Component {
 
   componentDidMount() {
     //listen on window to figure out drumpad press
-    window.addEventListener('keypress', this.handleKeyPress)
+    window.addEventListener('keydown', this.handleKeyDown)
   }
 
   setKeyPressed(keyPressed) {
@@ -19,7 +21,7 @@ class App extends Component {
     });
   }
 
-  handleKeyPress = (e) => {
+  handleKeyDown = (e) => {
     //know what character is clicked
     //convert to String
     const letter = String.fromCharCode(e.keyCode);
@@ -36,9 +38,17 @@ class App extends Component {
           className="main">
           <Display soundName={'Cymbal One'} />
 
-          <Drumpads 
+          <Drumpads
             setKeyPressed={this.setKeyPressed} 
-            keyPressed={this.state.keyPressed} />
+            keyPressed={this.state.keyPressed}
+            handleKeyDown={this.handleKeyDown}
+            buttons={drumpadList.map(drumpad => (
+              <Drumpad 
+                key={drumpad.key}
+                id={drumpad.key}
+                buttonKey={drumpad.key}
+                audioSource={drumpad.audioSource} />))}>
+          </Drumpads>
         </main>
 
         <Footer />

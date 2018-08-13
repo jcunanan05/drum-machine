@@ -20,7 +20,7 @@ $drumpad-border-radius: .2rem
     display: block
     margin: 0
 
-.drumpad button
+.drumpad .drumpad__button
   min-width: $drumpad-min-size
   min-height: $drumpad-min-size
   width: calc(#{$drumpad-min-size} + #{$drumpad-size})
@@ -37,11 +37,12 @@ $drumpad-border-radius: .2rem
 
 // button won't go super big super small devices
 @mixin drumpad-small-button()
-  .drumpad button
+  .drumpad .drumpad__button
     width: $drumpad-min-size
     height: $drumpad-min-size
 
-.drumpad button:active
+.drumpad .drumpad__button:active,
+.drumpad .drumpad__button.active
   color: $drumpad-black
   background-color: $drumpad-red-active
 

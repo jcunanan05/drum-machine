@@ -1,18 +1,28 @@
-import React from 'react';
-import Drumpad from './Drumpad';
-import drumpadList from '../drumpadList';
+import React, { Component } from 'react';
 
-const Drumpads = (props) => {
-  return (
-    <ol className="drumpads">
-      { drumpadList.map(drumpad => (
-        <Drumpad 
-          key={drumpad.key}
-          id={drumpad.key} 
-          buttonKey={drumpad.key}
-          audioSource={drumpad.audioSource} />))}
-    </ol>
-  );
-};
+
+class Drumpads extends Component {
+  componentDidUpdate() {
+    // listen if the component re rendered because of the keypress in the window
+    //filter the Drumpad JSX into the key pressed
+    const drumpad = this.props.buttons.filter(drumpad => (
+      drumpad.props.buttonKey.toLowerCase() === this.props.keyPressed
+    ))[0];
+
+    //play the sound from the filtered element
+    if(drumpad) {
+      console.log('drumpad found');
+      console.log(drumpad);
+    }
+  }
+
+  render() {
+    return (
+      <ol className="drumpads">
+        { this.props.buttons }
+      </ol>
+    );
+  }
+}
 
 export default Drumpads;

@@ -7,20 +7,23 @@ class Drumpad extends Component {
 
   handleClick = () => {
     //play sound inside the Sound component
-    this.soundRef.current.playSound();
+    const audio = this.soundRef.current;
+
+    audio.currentTime = 0;
+    audio.play();
   }
 
   render() {
     const props = this.props;
 
-    return (
+    return (  
       <li className="drumpad">
-        <button 
+        <button
           className="drumpad__button"
           onClick={this.handleClick}>
-          { props.buttonKey }
+          <kbd>{ props.buttonKey }</kbd>
 
-          <Sound 
+          <Sound
             ref={this.soundRef}
             source={props.audioSource} />
         </button>
