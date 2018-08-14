@@ -1,31 +1,38 @@
-import React, { Component } from 'react';
-import Sound from './Sound';
+import React from 'react';
 
+class Drumpad extends React.Component {
+  audioRef = React.createRef();
 
-class Drumpad extends Component {
-  soundRef = React.createRef();
+  componentDidUpdate() {
+    //compare the key pressed and real button key
 
-  handleClick = () => {
-    //play sound inside the Sound component
-    const audio = this.soundRef.current;
+    if(this.props.keyPressed.toLowerCase() === this.props.buttonKey.toLowerCase()) {
+      // play sound if the key matches
+      this.playSound();
+    }
+  }
 
-    audio.currentTime = 0;
-    audio.play();
+  playSound() {
+    const audio = this.audioRef.current;
+
+    if(audio) {
+      audio.currentTime = 0;
+      audio.play();
+    }
   }
 
   render() {
-    const props = this.props;
-
-    return (  
+    return (
       <li className="drumpad">
-        <button
+        <button 
           className="drumpad__button"
-          onClick={this.handleClick}>
-          <kbd>{ props.buttonKey }</kbd>
+          onClick={ this.props.onDrumClick }>
+          <kbd>{ this.props.buttonKey }</kbd>
 
-          <Sound
-            ref={this.soundRef}
-            source={props.audioSource} />
+          <audio ref={this.audioRef}>
+            <source src={ this.props.audioSource } type="audio/mpeg"/>
+            Sorry, <code>audio</code> HTML tag isn't available in your browser.
+          </audio>
         </button>
       </li>
     );
