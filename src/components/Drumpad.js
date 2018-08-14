@@ -4,9 +4,7 @@ class Drumpad extends React.Component {
   audioRef = React.createRef();
 
   componentDidUpdate() {
-    //compare the key pressed and real button key
-
-    if(this.props.keyPressed.toLowerCase() === this.props.buttonKey.toLowerCase()) {
+    if(this.drumpadIsActive()) {
       // play sound if the key matches
       this.playSound();
     }
@@ -21,12 +19,17 @@ class Drumpad extends React.Component {
     }
   }
 
+  drumpadIsActive() {
+    //compare the key pressed and real button key
+    return this.props.keyPressed.toLowerCase() === this.props.buttonKey.toLowerCase();
+  }
+
   render() {
     return (
       <li className="drumpad">
         <button 
-          className="drumpad__button"
-          onClick={ this.props.onDrumClick }>
+          className={`drumpad__button ${this.drumpadIsActive() ? 'active' : ''}`}
+          onClick={this.props.onDrumClick}>
           <kbd>{ this.props.buttonKey }</kbd>
 
           <audio ref={this.audioRef}>

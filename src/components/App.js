@@ -10,8 +10,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    //add keyDown listener for the drumpad
+    //monitor keyDowns for the drumpads, adding .active classes, setting keyPressed state
     window.addEventListener('keydown', this.handleKeyDown);
+
+    //monitor keyUp for resetting state and removing .active class for drumpads
+    window.addEventListener('keyup', this.handleKeyUp);
   }
 
   handleDrumClick(event) {
@@ -43,6 +46,11 @@ class App extends React.Component {
     this.setState({ keyPressed });
   }
 
+  handleKeyUp = () => {
+    //reset state to remove button active class
+    this.setState({ keyPressed: '' });
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -53,7 +61,7 @@ class App extends React.Component {
             </h1>
 
             <section className="display">
-              Drum Patch Sound
+              { this.state.displayName }
             </section>
           </header>
 
