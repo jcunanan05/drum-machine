@@ -29,7 +29,7 @@ class Drumpad extends React.Component {
       <li className="drumpad">
         <button 
           className={`drumpad__button ${this.drumpadIsActive() ? 'active' : ''}`}
-          onClick={this.props.onDrumClick}>
+          onClick={() => { this.playSound() }}>
           <kbd>{ this.props.buttonKey }</kbd>
 
           <audio ref={this.audioRef}>
