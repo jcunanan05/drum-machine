@@ -6,6 +6,7 @@ const drumpads = {
   addKey: function(charKey, fileName) {
     this.keyList.push({
       "key": charKey,
+      "audioName": `${fileName}`,
       "audioSource": `${ASSET_URL}/${fileName}`
     });
   },
@@ -16,9 +17,17 @@ const drumpads = {
 };
 
 function getAudioSource (buttonKey) {
-  return drumpads.getAllKeys()
+  const audioName = drumpads.getAllKeys()
     .filter(drumpad => (drumpad.key.toLowerCase() === buttonKey.toLowerCase())
-  )[0]['audioSource'];
+  )[0];
+
+  if(!audioName) return ''; //return empty string if the array is empty
+
+  return removeFileExtension(audioName['audioName']);
+}
+
+function removeFileExtension(audioName) {
+  return audioName ? audioName.replace(/\.mp3/, '') : '';
 }
 
 drumpads.addKey('Q', 'bubbles.mp3');
