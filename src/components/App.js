@@ -53,22 +53,23 @@ class App extends React.Component {
             <h1 className="header__text">
               Drum Machine!
             </h1>
-
-            <section className="display">
-              <h2>{ this.state.displayName }</h2>
-            </section>
           </header>
 
-          <ol 
-            className="drumpads"
-            onClick={this.handleClick}>
-            {drumpadList.map(drumpad => (
-              <Drumpad 
-                key={drumpad.key}
-                buttonKey={drumpad.key}
-                audioSource={drumpad.audioSource} />))}
-          </ol>
+          <section className="drum-machine">
+            <header className="display">
+              <h2 className="display__title">{ this.state.displayName }</h2>
+            </header>
 
+            <ol 
+              className="drumpads"
+              onClick={this.handleClick}>
+              {drumpadList.map(drumpad => (
+                <Drumpad 
+                  key={drumpad.key}
+                  buttonKey={drumpad.key}
+                  audioSource={drumpad.audioSource} />))}
+            </ol>
+          </section>
 
           <footer className="footer">
             Copyright &copy; 2018. All Rights Reserved. Made by Jonathan Cunanan.

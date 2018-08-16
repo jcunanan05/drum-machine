@@ -26,6 +26,23 @@ body {
     display: grid;
     grid-auto-rows: min-content; } }
 
+.drum-machine {
+  background: #424242;
+  border-radius: 1rem;
+  padding: 3rem 0.8rem 0.8rem 0.8rem;
+  margin-bottom: 3rem; }
+
+.display {
+  background: white;
+  border-radius: 0.2rem;
+  padding: 0.5rem;
+  margin: 0 0.9rem;
+  box-shadow: 0px 0px 8px 2px #d32f2f7a inset; }
+
+.display__title {
+  text-align: center;
+  margin: 0; }
+
 .drumpads {
   text-align: center;
   padding-left: 0;

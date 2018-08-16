@@ -36,11 +36,7 @@ This is a mini-project that I made for fCC front-end libraries development proje
 
 ### Work to do
 
-- Play audio on keyboard press
-
-### Work left
-
-- make a state called `keyPressed` to monitor keypress
+- Style the drum machine body
 
 ### Work done
 
@@ -51,3 +47,4 @@ This is a mini-project that I made for fCC front-end libraries development proje
 - Style Buttons
 - Make skeleton layout
 - Play audio on audio click
+- Play audio on keyboard press
