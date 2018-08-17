@@ -1,8 +1,8 @@
 import React from 'react';
-import Drumpad from './Drumpad';
-import drumpadList, { getAudioSource } from '../drumpadList';
-
-//rewrite my app from scratch and start with the simple before making it to components
+import DrumMachine from './DrumMachine';
+import Footer from './Footer';
+import Header from './Header';
+import { getAudioSource } from '../drumpadList';
 
 class App extends React.Component {
   state = {
@@ -14,6 +14,11 @@ class App extends React.Component {
     window.addEventListener('keydown', this.handleKeyDown);
   }
 
+  componentWillUnmount() {
+    //cleanup event listeners
+    window.removeEventListener('keydown');
+  }
+
   handleKeyDown = (event) => {
     //get string keypressed value
     const keyPressed = String.fromCharCode(event.keyCode);
@@ -21,21 +26,6 @@ class App extends React.Component {
 
     //get audioSource and 
     this.setDisplayName(audioSource);
-  }
-
-  handleClick = (event) => {
-    //only execute when the target is a button
-    if(event.target.tagName === 'BUTTON') {
-      //get inner text of the <kbd> element to find the display name
-      const keyClicked = [...event.target.childNodes]
-        .filter(children => (children.tagName === 'KBD')
-        )[0].innerText;
-      //find the display name
-      const audioSource = getAudioSource(keyClicked);
-
-      //update display
-      this.setDisplayName(audioSource);
-    };
   }
 
   setDisplayName = (displayName) => {
@@ -49,32 +39,14 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <main className="main">
-          <header className="header">
-            <h1 className="header__text">
-              Drum Machine!
-            </h1>
-          </header>
+          <Header text={'Drum Machine!'} />
 
-          <section className="drum-machine">
-            <header className="display">
-              <h2 className="display__title">{ this.state.displayName }</h2>
-            </header>
-
-            <ol 
-              className="drumpads"
-              onClick={this.handleClick}>
-              {drumpadList.map(drumpad => (
-                <Drumpad 
-                  key={drumpad.key}
-                  buttonKey={drumpad.key}
-                  audioSource={drumpad.audioSource} />))}
-            </ol>
-          </section>
-
-          <footer className="footer">
-            Copyright &copy; 2018. All Rights Reserved. Made by Jonathan Cunanan.
-          </footer>
+          <DrumMachine
+            displayName={this.state.displayName}
+            setDisplayName={this.setDisplayName} />
         </main>
+
+        <Footer />
       </React.Fragment>
     );
   }

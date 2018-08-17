@@ -15,6 +15,12 @@ class Drumpad extends React.Component {
     window.addEventListener('keyup', this.handleKeyUp);
   }
 
+  componentWillUnmount() {
+    //cleanup all event listeners
+    window.removeEventListener('keydown');
+    window.removeEventListener('keyup');
+  }
+
   playSound() {
     const audio = this.audioRef.current;
 

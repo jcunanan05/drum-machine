@@ -1,13 +1,20 @@
+$main-color: #b2ebf2
+
+body
+  background-color: $main-color
+
 #root
   display: flex
   flex-flow: column
   min-height: 100vh
 
 .main
-  flex: 3
-  padding: 1rem
+  flex: 7
+  display: flex
+  flex-flow: column
+  padding: $main-padding
 
-@supports (display: grid)
-  .main
-    display: grid
-    grid-auto-rows: min-content
+// @supports (display: grid)
+//   .main
+//     display: grid
+//     grid-auto-rows: min-content
