@@ -1,4 +1,5 @@
 import React from 'react';
+import { removeFileExtension } from '../drumpadList';
 
 class Drumpad extends React.Component {
   state = {
@@ -51,14 +52,20 @@ class Drumpad extends React.Component {
 
   render() {
     return (
-      <li className="drumpad">
+      <li 
+        className="drum-pad"
+        id={ `${removeFileExtension(this.props.audioName)}` }>
         <button 
-          className={`drumpad__button ${this.state.isDrumpadActive ? 'active' : ''}`}
+          className={`drum-pad__button ${this.state.isDrumpadActive ? 'active' : ''}`}
           onClick={() => { this.playSound() }}>
           <kbd>{ this.props.buttonKey }</kbd>
 
-          <audio ref={this.audioRef}>
-            <source src={ this.props.audioSource } type="audio/mpeg"/>
+          <audio
+            id={this.props.buttonKey.toUpperCase()} 
+            className="clip"
+            src={this.props.audioSource}
+            ref={this.audioRef}>
+            <source src={this.props.audioSource} type="audio/mpeg"/>
             Sorry, <code>audio</code> HTML tag isn't available in your browser.
           </audio>
         </button>

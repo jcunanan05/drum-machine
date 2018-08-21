@@ -8,7 +8,7 @@ $drumpad-red-active: #b93838
 $drumpad-border-radius: .2rem
 
 
-.drumpad
+.drum-pad
   // fallback layout for super old browsers: effect, 
   // make them inline and breathing space is declared by margin
   display: inline-block
@@ -16,11 +16,11 @@ $drumpad-border-radius: .2rem
 
 // remove fallback layout when grid is supported
 @mixin remove-drumpad-fallback()
-  .drumpad
+  .drum-pad
     display: block
     margin: 0
 
-.drumpad .drumpad__button
+.drum-pad .drum-pad__button
   min-width: $drumpad-min-size
   min-height: $drumpad-min-size
   width: calc(#{$drumpad-min-size} + #{$drumpad-size})
@@ -37,12 +37,12 @@ $drumpad-border-radius: .2rem
 
 // button won't go super big super small devices
 @mixin drumpad-small-button()
-  .drumpad .drumpad__button
+  .drum-pad .drum-pad__button
     width: $drumpad-min-size
     height: $drumpad-min-size
 
-.drumpad .drumpad__button:active,
-.drumpad .drumpad__button.active
+.drum-pad .drum-pad__button:active,
+.drum-pad .drum-pad__button.active
   color: $drumpad-black
   background-color: $drumpad-red-active
 

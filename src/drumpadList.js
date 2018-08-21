@@ -41,5 +41,5 @@ drumpads.addKey('X', 'pinwheel.mp3');
 drumpads.addKey('C', 'piston-1.mp3');
 
 
-export { getAudioSource };
+export { getAudioSource, removeFileExtension };
 export default drumpads.getAllKeys();

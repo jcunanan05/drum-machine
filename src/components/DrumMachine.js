@@ -21,7 +21,9 @@ class DrumMachine extends React.Component {
 
   render() {
     return (
-      <section className="drum-machine">
+      <section 
+        className="drum-machine"
+        id="drum-machine">
         <div className="drum-machine__wrapper">
           
           <Display displayName={this.props.displayName} />
@@ -33,6 +35,7 @@ class DrumMachine extends React.Component {
               <Drumpad 
                 key={drumpad.key}
                 buttonKey={drumpad.key}
+                audioName={drumpad.audioName}
                 audioSource={drumpad.audioSource} />))}
           </ol>
         </div>

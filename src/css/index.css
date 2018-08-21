@@ -30,13 +30,17 @@ body {
   flex: 1; }
 
 .drum-machine__wrapper {
-  padding: 2rem 0.8rem 0.8rem 0.8rem;
+  max-width: 40rem;
+  padding: 2rem 0.8rem;
+  margin: 0 auto;
   margin-bottom: 3rem;
   border-radius: 0.4rem;
   background-color: #424242; }
 
 .display {
-  width: 13rem;
+  max-width: 20rem;
+  min-width: 13rem;
+  width: 61vw;
   padding: 0.5rem;
   margin: 0 auto 2rem auto;
   background-color: white;
@@ -63,11 +67,11 @@ body {
   .drumpads {
     text-align: left; } }
 
-.drumpad {
+.drum-pad {
   display: inline-block;
   margin: .5rem; }
 
-.drumpad .drumpad__button {
+.drum-pad .drum-pad__button {
   min-width: 4rem;
   min-height: 4rem;
   width: calc(4rem + 6vw);
@@ -82,26 +86,30 @@ body {
   background-color: #212121;
   cursor: pointer; }
 
-.drumpad .drumpad__button:active,
-.drumpad .drumpad__button.active {
+.drum-pad .drum-pad__button:active,
+.drum-pad .drum-pad__button.active {
   color: #212121;
   background-color: #b93838; }
 
 @media screen and (max-width: 320px) {
-  .drumpad .drumpad__button {
+  .drum-pad .drum-pad__button {
     width: 4rem;
     height: 4rem; } }
 
 @supports (display: grid) {
-  .drumpad {
+  .drum-pad {
     display: block;
     margin: 0; } }
+
+.header {
+  text-align: center; }
 
 .footer {
   flex: 1;
   display: flex;
   flex-flow: column;
   justify-content: center;
+  min-height: 9rem;
   padding: 1rem;
   text-align: center;
   background-color: #e0e0e0; }
