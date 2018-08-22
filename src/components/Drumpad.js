@@ -1,9 +1,11 @@
 import React from 'react';
-import { removeFileExtension } from '../drumpadList';
+import { removeFileExtension } from '../utilities/drumpadList';
+import { playSound, soundIsPlaying, soundIsEnded } from '../utilities/audio';
 
 class Drumpad extends React.Component {
   state = {
-    isDrumpadActive: false
+    isDrumpadActive: false,
+    isAudioPlaying: false
   }
 
   audioRef = React.createRef();
@@ -14,21 +16,26 @@ class Drumpad extends React.Component {
 
     //monitor keyUp for resetting state and removing .active class for drumpads
     window.addEventListener('keyup', this.handleKeyUp);
+
+    //monitor audio playing and ending
+    soundIsPlaying(this.audioRef.current, (audio) => {
+      // add .playing to audio
+      if(!this.state.isAudioPlaying) this.setState({ isAudioPlaying: true });
+    });
+
+    soundIsEnded(this.audioRef.current, (audio) => {
+      // remove .playing to audio
+      if(this.state.isAudioPlaying) this.setState({ isAudioPlaying: false });
+
+      // disable active drumpad if it isn't
+      if(this.state.isDrumpadActive) this.setState({ isDrumpadActive: false });
+    });
   }
 
   componentWillUnmount() {
     //cleanup all event listeners
     window.removeEventListener('keydown');
     window.removeEventListener('keyup');
-  }
-
-  playSound() {
-    const audio = this.audioRef.current;
-
-    if(audio) {
-      audio.currentTime = 0;
-      audio.play();
-    }
   }
 
   handleKeyDown = (event) => {
@@ -39,11 +46,10 @@ class Drumpad extends React.Component {
     if(!(keyPressed.toLowerCase() === this.props.buttonKey.toLowerCase())) return;
 
     this.setState({ isDrumpadActive: true });
+
     //play sound
-    this.playSound();
+    playSound(this.audioRef.current);
   }
-
-
 
   handleKeyUp = () => {
     //remove active class in button on key up
@@ -57,12 +63,12 @@ class Drumpad extends React.Component {
         id={ `${removeFileExtension(this.props.audioName)}` }>
         <button 
           className={`drum-pad__button ${this.state.isDrumpadActive ? 'active' : ''}`}
-          onClick={() => { this.playSound() }}>
+          onClick={() => { playSound(this.audioRef.current) }}>
           <kbd>{ this.props.buttonKey }</kbd>
 
           <audio
             id={this.props.buttonKey.toUpperCase()} 
-            className="clip"
+            className={`clip ${this.state.isAudioPlaying ? 'playing' : ''}`}
             src={this.props.audioSource}
             ref={this.audioRef}>
             <source src={this.props.audioSource} type="audio/mpeg"/>

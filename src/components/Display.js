@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Display = (props) => (
-  <header 
-    className="display"
-    id="display">
-    <h2 className="display__title">{ props.displayName }</h2>
+  <header className="display">
+    <h2 
+      className="display__title"
+      id="display">{ props.displayName }</h2>
   </header>
 );
 

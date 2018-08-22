@@ -35,8 +35,7 @@ This is a mini-project that I made for fCC front-end libraries development proje
 - [csstricks grid](https://css-tricks.com/snippets/css/complete-guide-grid/)
 
 ### Work to do
-
-- Style the drum machine body
+- Fix setTimeOut when audio stopped playing
 
 ### Work done
 
@@ -48,3 +47,4 @@ This is a mini-project that I made for fCC front-end libraries development proje
 - Make skeleton layout
 - Play audio on audio click
 - Play audio on keyboard press
+- Style the drum machine body

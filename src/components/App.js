@@ -2,7 +2,7 @@ import React from 'react';
 import DrumMachine from './DrumMachine';
 import Footer from './Footer';
 import Header from './Header';
-import { getAudioSource } from '../drumpadList';
+import { getAudioSource } from '../utilities/drumpadList';
 
 class App extends React.Component {
   state = {
@@ -39,7 +39,7 @@ class App extends React.Component {
     return (
       <React.Fragment>
         <main className="main">
-          <Header text={'Drum Machine!'} />
+          <Header text={'FCC Drum Machine!'} />
 
           <DrumMachine
             displayName={this.state.displayName}

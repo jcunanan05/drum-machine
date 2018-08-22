@@ -1,7 +1,7 @@
 import React from 'react';
 import Drumpad from './Drumpad';
 import Display from './Display';
-import drumpadList, { getAudioSource } from '../drumpadList';
+import drumpadList, { getAudioSource } from '../utilities/drumpadList';
 
 class DrumMachine extends React.Component {
   handleClick = (event) => {
